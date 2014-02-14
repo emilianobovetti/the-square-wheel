@@ -1,0 +1,2 @@
+ 
+Oggetto eliminato correttamente.

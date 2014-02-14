@@ -3,3 +3,11 @@
 */logs/!index.html
 */cache/*
 */cache/!index.html
+
+phpmyadmin/
+postfixadmin/
+application/cache/*
+application/config/database.php
+application/config/config.php
+application/config/recaptcha.php
+info.php
