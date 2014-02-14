@@ -82,13 +82,6 @@ h3 {
   top: 15px;
 }
 
-/*
-.ring {
-  float: right;
-  padding: 1%;
-}
-*/
-
 .margin_20 {
   margin: 20px;
 }
@@ -243,8 +236,6 @@ article {
   margin-bottom: 50px;
   min-height: 100px;
   background-color: #FFF;
-  /*border: 1px solid;*/
-  /*border-radius: 15px;*/
 }
 
 div.article_author {
@@ -315,6 +306,35 @@ blockquote:before {
 
 blockquote p {
   display: inline;
+}
+
+/*-------------------------
+  Login
+--------------------------*/
+
+.login {
+  margin: 20px;
+}
+
+.login label {
+  display: block;
+  font-size: large;
+}
+
+.login input {
+  background-color: #FAFAFA;
+  border: 4px solid;
+  border-color: #BDBDBD;
+  padding: 5px;
+}
+
+.login input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #FAFAFA inset;
+}
+
+.login input:focus {
+  outline: none;
+  border-color: #A4A4A4;
 }
 
 /*-------------------------
