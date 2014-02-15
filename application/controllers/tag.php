@@ -14,7 +14,8 @@ class Tag extends MY_Controller {
 			show_404('/tag');
 
 		$this->load->model('Articles_model');
-		$tag_name = str_replace('-', ' ', $value);
+		$tag_name = url_decode($value);
+		
 		$this->Articles_model->get_by_tag($tag_name, $page, 'preview');
 		$articles = $this->Articles_model->articles();
 
