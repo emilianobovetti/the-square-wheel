@@ -38,7 +38,7 @@ Come ho detto programmo da pochissimo, e da ancora meno ho scoperto i framework 
 ma devo ammettere che [CodeIgniter][3] è uno strumento ottimo!    
 Per chi non lo sapesse molti framework per lo sviluppo web utilizzano il pattern
 [MVC][4] che, secondo me, permette anche a un neofita di strutturare un'applicazione
-in maniera (non troppo) disordinata.
+in maniera (abbastanza) ordinata.
 Se avessi sviluppato con PHP ignorando i vari framework, ci avrei impiegato il triplo
 e il risutato sarebbe stato decisamente *troppo* amatoriale.
 
@@ -78,20 +78,24 @@ sui motori di ricerca, sui social network, etc... perché allora dovremmo anche 
 ![It's free!][6]
 
 *Free software* non significa semplicemente "gratuito".    
+
+> You should think of *free* as in *free speech*, not as in *free beer*.
+
 Come ci insegnano i nostri simpatici amici invasati della [FSF][7]
 (che possono spiegare questo concetto molto meglio di me):
 
-> Free software developers guarantee everyone equal rights to their programs;
-> any user can study the source code of a free program, modify it and share it.
-> By contrast, most software carries licenses,
-> patents and agreements that deny us these basic rights.
+
+> Il *Software libero* è software che rispetta la libertà degli utenti e la comunità.
+> In breve, significa che gli utenti hanno la libertà di
+> **eseguire, copiare, distribuire, studiare, modificare e migliorare il software**.
 
 Ecco perché tutto il sorgente di questo progetto è disponibile su [GitHub][8].    
-Per quanto possa sconsigliarvi di invischiarvi in righe e righe di codice
-non ancora documentate e tutto sommato male organizzate, potete comunque
-leggere, copiare e modificare il codice in questione e studiarlo per tentare
-eventuali SQL injection.    
-In quest'ultimo caso vi prego di [contattarmi][9] per dirmi come avete fatto.
+Certo al momento sono righe e righe di codice non ancora documentate
+e tutto sommato male organizzate, ma potete comunque utilizzare questo codice
+come meglio credete.    
+Leggete, copiate, modificate, trovate buchi nella sicurezza e sbizzarritevi con SQL injection. 
+In quest'ultimo non preoccupatevi, tengo il backup aggiornato, ma vi prego di [contattarmi][9]
+per dirmi come avete fatto.
 
 Grazie per l'attenzione, auguro a tutti buona lettura.
 
