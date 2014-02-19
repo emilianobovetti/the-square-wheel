@@ -94,8 +94,8 @@ Certo al momento sono righe e righe di codice non ancora documentate
 e tutto sommato male organizzate, ma potete comunque utilizzare questo codice
 come meglio credete.    
 Leggete, copiate, modificate, trovate buchi nella sicurezza e sbizzarritevi con SQL injection. 
-In quest'ultimo non preoccupatevi, tengo il backup aggiornato, ma vi prego di [contattarmi][9]
-per dirmi come avete fatto.
+In quest'ultimo caso non preoccupatevi, ho un backup aggiornato, ma vi prego di [contattarmi][9]
+per farmi sapere come avete fatto.
 
 Grazie per l'attenzione, auguro a tutti buona lettura.
 

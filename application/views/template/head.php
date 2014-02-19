@@ -15,11 +15,7 @@ $description = ( ! isset($description))
 <html lang="it">
   <head>
       <meta charset="utf-8">
-      
-      <!--
-      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-      -->
-      
+
       <title><?php echo $site_title; ?></title>
 
       <meta name="description" content="<?php echo $description; ?>" />
@@ -27,7 +23,8 @@ $description = ( ! isset($description))
       <meta name="author" content="Emiliano Bovetti" />
       
       <base target="_self">
-      <link rel="stylesheet" type="text/css" href="/css/base.css">
+      <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH . 'base.css'; ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH . 'monokai_sublime.css'; ?>">
       <link rel="shortcut icon" href="/img/square.ico">
   </head>
   

@@ -45,12 +45,16 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 |
 */
 
-define('THIRD_PARTY', APPPATH . 'third_party/');
+define('THIRD_PARTY', FCPATH . 'application/third_party/');
 define('PHPASS_PATH', THIRD_PARTY . 'phpass/');
 define('UTF8_PATH', THIRD_PARTY . 'utf8/');
 define('PARSEDOWN_PATH', THIRD_PARTY . 'parsedown/');
-define('UPLOAD_PATH', BASEPATH . '../resources/');
-define('STATIC_PAGES_PATH', BASEPATH . '../static/');
+
+define('UPLOAD_PATH', FCPATH . 'resources/');
+define('STATIC_PAGES_PATH', FCPATH . 'static/');
+
+define('CSS_PATH', '/css/');
+define('JS_PATH', '/js/');
 
 /*
 |--------------------------------------------------------------------------
