@@ -15,6 +15,8 @@ Un grazie a...
 
 - [PageConfig](http://pageconfig.com/post/portable-utf8) che rilascia lo script per la compatibiltà con UTF-8
 
+- [highlight.js](http://highlightjs.org/) per questa fantastica risorsa
+
 - [Rasmus Lerdorf](http://it.wikipedia.org/wiki/Rasmus_Lerdorf) per il linguaggio PHP e a tutti gli [sviluppatori](http://php.net/) che lavorano a questo linguaggio
 
 - [MySQL](https://www.mysql.it/) per il database open source più diffuso al mondo
