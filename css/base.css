@@ -51,7 +51,7 @@ h3 {
 }
 
 /*-------------------------
-	Block classes
+	Classes
 --------------------------*/
 
 .centered {
@@ -236,6 +236,7 @@ article {
   margin-bottom: 50px;
   min-height: 100px;
   background-color: #FFF;
+  line-height: 2em;
 }
 
 div.article_author {
@@ -306,6 +307,17 @@ blockquote:before {
 
 blockquote p {
   display: inline;
+}
+
+code {
+  font-family: monospace;
+}
+
+code:not([class|="language"]) {
+  background-color: #f4f7fb;
+  border-right: 2px solid #819FF7;
+  border-bottom: 2px solid #A9BCF5;
+  padding: 0.3em 0.5em;
 }
 
 /*-------------------------
