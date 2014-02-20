@@ -46,7 +46,7 @@ function print_tags( $tags, $array_key = NULL)
 
 function get_upload_link( $file_name )
 {
-	return '/resources/' . $file_name;
+	return RESOURCES_PATH . $file_name;
 }
 
 /* End of file MY_url_helper.php */

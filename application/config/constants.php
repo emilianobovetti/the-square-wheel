@@ -53,6 +53,8 @@ define('PARSEDOWN_PATH', THIRD_PARTY . 'parsedown/');
 define('UPLOAD_PATH', FCPATH . 'resources/');
 define('STATIC_PAGES_PATH', FCPATH . 'static/');
 
+define('IMG_PATH', '/img/');
+define('RESOURCES_PATH', '/resources/');
 define('CSS_PATH', '/css/');
 define('JS_PATH', '/js/');
 

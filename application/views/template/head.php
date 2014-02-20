@@ -23,8 +23,8 @@ $description = ( ! isset($description))
       <meta name="author" content="Emiliano Bovetti" />
       
       <base target="_self">
-      <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH . 'base.css'; ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH . 'monokai_sublime.css'; ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH, 'base.css'; ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH, 'monokai_sublime.css'; ?>">
       <link rel="shortcut icon" href="/img/square.ico">
   </head>
   

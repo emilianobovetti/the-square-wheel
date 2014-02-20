@@ -454,6 +454,7 @@ div#comment_author {
   clear: left;
   width: 80.7%;
   padding: 3%;
+  line-height: 2em;
   background-color: #FFF;
 }
 

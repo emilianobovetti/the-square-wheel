@@ -14,7 +14,7 @@ switch ($ring) {
   default: break;
 }
 
-$ring_path = '/img/' . $ring;
+$ring_path = IMG_PATH . $ring;
 
 $article_preview = 'class="article_preview" ';
 
@@ -31,7 +31,7 @@ if (isset($preview))
             <?php if ($admin === TRUE): ?>
               <div class="manage_article">
                 <?php
-                  echo '<a href="' . site_url("admin/article/$id") . '">Modifica</a>';
+                  echo '<a href="', site_url("admin/article/$id"), '">Modifica</a>';
                 ?>
               </div>
             <?php endif; ?>

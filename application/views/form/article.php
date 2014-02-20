@@ -25,7 +25,7 @@ if (isset($article_id))
 {
 	echo form_open('admin/delete');
 	echo form_hidden('article_id', $article_id);
-	echo '<div class="publish_button">' . form_submit('delete', 'Elimina') . '</div>';
+	echo '<div class="publish_button">', form_submit('delete', 'Elimina'), '</div>';
 	echo form_close();
 }
 ?>
