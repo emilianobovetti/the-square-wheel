@@ -1,6 +1,8 @@
 sudo: false
 
-language: generic
+language: node_js
+node_js:
+  - "9"
 
 cache:
   directories:
