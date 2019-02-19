@@ -14,7 +14,7 @@ fi
 
 if [ "$TRAVIS_BRANCH" = "master" ]; then
     npx netlify deploy \
-        --message="deploying $(git rev-parse HEAD)" \
+        --message="$(git rev-parse HEAD)" \
         --auth="$NETLIFY_AUTH_TOKEN" \
         --site="$NETLIFY_SITE_ID" \
         --dir=public \
