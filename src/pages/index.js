@@ -9,12 +9,10 @@ import SEO from '../components/seo';
 
 const BlogIndex = ({ data }) =>
   <Layout title={data.site.siteMetadata.title}>
-    <SEO
-      lang="it"
-      title="All posts"
-      keywords={[ 'blog', 'gatsby', 'javascript', 'react' ]}
-    />
+    <SEO lang="it" />
+
     {data.allMarkdownRemark.edges.map(PostPreview)}
+
     <AuthorInfo />
   </Layout>;
 

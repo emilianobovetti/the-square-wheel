@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
+import scale from '../utils/typography/scale';
 import rhythm from '../utils/typography/rhythm';
 import logoSrc from '../../content/assets/logo.svg';
 import homeLogoSrc from '../../content/assets/home.svg';
@@ -57,6 +58,7 @@ const HomeLogo = styled.img`
 `;
 
 const Footer = styled.footer`
+  ${scale(-0.2)}
   margin-top: ${rhythm(1.5)};
 `;
 
@@ -111,11 +113,11 @@ const Layout = ({ title, children }) =>
       <main>{children}</main>
       <Footer>
         <div>
-          The Square Wheel&apos;s logo is made by {Ivan}
+          The Square Wheel&apos;s logo is made by {Ivan}.
         </div>
 
         <div>
-          Icons made by {DaveGandy} from {Flaticon} is licensed by {CCLicense}
+          Icons made by {DaveGandy} from {Flaticon} is licensed by {CCLicense}.
         </div>
       </Footer>
     </MainWrapper>
