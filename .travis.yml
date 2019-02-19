@@ -1,0 +1,21 @@
+sudo: false
+
+language: generic
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - make
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: bash deploy.sh
+  on:
+    branch: master
+
+addons:
+  apt:
+    update: true
