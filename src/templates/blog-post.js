@@ -36,13 +36,13 @@ const RightLinkWrapper = styled.li`
 
 const BlogPostTemplate = props => {
   const post = props.data.markdownRemark;
-  const { lang, postTitle } = post.frontmatter;
+  const { lang, title } = post.frontmatter;
   const { previous, next } = props.pageContext;
 
   return (
     <Layout>
-      <SEO lang={lang} title={postTitle} description={post.excerpt} />
-      <h1>{postTitle}</h1>
+      <SEO lang={lang} title={title} description={post.excerpt} />
+      <h1>{title}</h1>
       <DateBox>{post.frontmatter.date}</DateBox>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
       <SpacedHr />
