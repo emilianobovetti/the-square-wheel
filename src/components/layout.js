@@ -59,7 +59,7 @@ const HomeLogo = styled.img`
 `;
 
 const SpacedHr = styled.hr`
-  margin-bottom: ${rhythm(2 / 3)};
+  margin: ${rhythm(2 / 3)} 0;
 `;
 
 const Footer = styled.footer`
