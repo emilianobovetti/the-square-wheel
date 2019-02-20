@@ -3,20 +3,15 @@ import { Link, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import AuthorInfo from '../components/author-info';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import rhythm from '../utils/typography/rhythm';
 import scale from '../utils/typography/scale';
 
 const DateBox = styled.p`
-  ${scale(-0.2)}
+  ${scale(-1 / 5)}
   margin-bottom: ${rhythm(1)};
   margin-top: ${rhythm(-1)};
-`;
-
-const SpacedHr = styled.hr`
-  margin-bottom: ${rhythm(1)};
 `;
 
 const ArticleNavigation = styled.ul`
@@ -45,8 +40,6 @@ const BlogPostTemplate = props => {
       <h1>{title}</h1>
       <DateBox>{post.frontmatter.date}</DateBox>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      <SpacedHr />
-      <AuthorInfo />
       <ArticleNavigation>
         <LeftLinkWrapper>
           {previous &&

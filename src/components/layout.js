@@ -7,18 +7,19 @@ import scale from '../utils/typography/scale';
 import rhythm from '../utils/typography/rhythm';
 import logoSrc from '../../content/assets/logo.svg';
 import homeLogoSrc from '../../content/assets/home.svg';
+import AuthorInfo from './author-info';
 
 const TitleLink = styled(Link)`
   color: inherit;
 `;
 
 const PageWrapper = styled.div`
-  background: linear-gradient(#f2f2f2 25%, white 50%);
+  background: linear-gradient(#f2f2f2 ${rhythm(5)}, white ${rhythm(12)});
   padding-top: ${rhythm(1)};
 `;
 
 const LogoWrapper = styled(Link)`
-  margin: 0 ${rhythm(1)};
+  margin: 0 ${rhythm(1)} ${rhythm(1 / 2)} ${rhythm(1)};
   float: left;
   width: 100px;
 
@@ -57,9 +58,13 @@ const HomeLogo = styled.img`
   float: right;
 `;
 
+const SpacedHr = styled.hr`
+  margin-bottom: ${rhythm(2 / 3)};
+`;
+
 const Footer = styled.footer`
-  ${scale(-0.2)}
-  margin-top: ${rhythm(1.5)};
+  ${scale(-1 / 5)}
+  margin: ${rhythm(4 / 3)} 0;
 `;
 
 const BlankTargetLink = ({ href, title, children }) =>
@@ -111,6 +116,8 @@ const Layout = ({ title, children }) =>
 
     <MainWrapper>
       <main>{children}</main>
+      <SpacedHr />
+      <AuthorInfo />
       <Footer>
         <div>
           The Square Wheel&apos;s logo is made by {Ivan}.
