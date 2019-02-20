@@ -36,12 +36,12 @@ const RightLinkWrapper = styled.li`
 
 const BlogPostTemplate = props => {
   const post = props.data.markdownRemark;
-  const postTitle = post.frontmatter.title;
+  const { lang, postTitle } = post.frontmatter;
   const { previous, next } = props.pageContext;
 
   return (
     <Layout>
-      <SEO lang="it" title={postTitle} description={post.excerpt} />
+      <SEO lang={lang} title={postTitle} description={post.excerpt} />
       <h1>{postTitle}</h1>
       <DateBox>{post.frontmatter.date}</DateBox>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -86,6 +86,7 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       frontmatter {
+        lang
         title
         date(formatString: "MMMM DD, YYYY")
       }

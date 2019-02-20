@@ -19,4 +19,4 @@ eslint-fix: $(node_bin_dir)
 	@yarn run eslint-fix
 
 clean:
-	@rm -rf $(node_modules) $(CURDIR)/.cache
+	@rm -rf $(node_modules) .cache public

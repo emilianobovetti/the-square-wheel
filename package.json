@@ -1,7 +1,7 @@
 {
   "name": "the-square-wheel",
-  "description": "A starter for a blog powered by Gatsby and Markdown",
-  "version": "0.0.1",
+  "description": "It looks like a wheel but it's not a wheel.",
+  "version": "0.1.0",
   "author": "Emiliano Bovetti <emiliano.bovetti@gmail.com>",
   "bugs": {
     "url": "https://github.com/emilianobovetti/the-square-wheel/issues"
