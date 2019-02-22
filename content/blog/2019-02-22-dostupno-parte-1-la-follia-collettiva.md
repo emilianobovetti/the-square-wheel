@@ -31,7 +31,11 @@ Chi non si è fatto trascinare da questo vortice di orgogliosa autarchia nell'ul
 
 Questo è quello che mi ha spinto a buttare un po' di tempo qui sopra. Non perché ne abbia molto da perdere, ma per frustrazione, perché gli approfondimenti che mi farebbe piacere leggere spesso non li trovo.
 
+<<<<<<< HEAD
 Da qui in poi voglio smettere di lamentarmi e iniziare a costruire qualcosa che, spero vivamente, qualcuno possa apprezzare.
+=======
+Da qui in poi voglio smettere di lamentarmi e iniziare a costruire qualcosa che, spero vivamente, possa essere apprezzato.
+>>>>>>> d13c704018ab4d26cc4f1999580e11a77e67fb45
 
 [securityinfo-dostupno]: https://www.securityinfo.it/2019/02/18/dostupno-lapp-di-messaggistica-espone-i-dati-degli-utenti-su-internet/
 [attivissimo-dostupno]: https://attivissimo.blogspot.com/2019/02/la-strana-stranissima-storia-di.html
