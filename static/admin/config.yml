@@ -1,0 +1,20 @@
+backend:
+  name: github
+  repo: emilianobovetti/the-square-wheel
+
+publish_mode: editorial_workflow
+
+media_folder: static/assets
+public_folder: assets
+
+collections:
+  - name: blog
+    label: Blog
+    folder: content/blog
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Language", name: "lang", widget: "select", options: ["en", "it"]}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Body", name: "body", widget: "markdown"}
