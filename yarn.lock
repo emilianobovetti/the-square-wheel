@@ -13740,10 +13740,10 @@ typeface-roboto-condensed@^0.0.54:
   resolved "https://registry.yarnpkg.com/typeface-roboto-condensed/-/typeface-roboto-condensed-0.0.54.tgz#4e0d5d24ed95e1e2efa7fcf55b8a9ceaa5bd2be7"
   integrity sha512-1o6p2h4VGqGKQmhjNUli1jY6EHpUobRCYZilhJJ50WtANOy2jKnhIDudDYSj2TcY2VRGFXVm8xRjct3iUkhS7A==
 
-typeface-vollkorn@^0.0.54:
-  version "0.0.54"
-  resolved "https://registry.yarnpkg.com/typeface-vollkorn/-/typeface-vollkorn-0.0.54.tgz#1288bcd7d81c3dd7cd419e4448580d2a0b0640b2"
-  integrity sha512-eVTGPinLEnT9IJdL/5HhNaily6de5zWB4w2VQyL2u67R4cdvh4i+cE7LVusef9YE5KW6wT4ZU9UQ8lS6qD7wuA==
+typeface-vollkorn@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-vollkorn/-/typeface-vollkorn-0.0.72.tgz#eab29df42e6ae5ab96ff4a062f071ad439c27060"
+  integrity sha512-p2wWq3UH48kU6afKHLrWacJeKcqvZJvhbFKPpzOKd6c3hjyyqduYaixJ4cAZcSMrlaIgrqauqLmMqq1a3p9rMg==
 
 typescript-eslint-parser@^18.0.0:
   version "18.0.0"
