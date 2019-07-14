@@ -4,6 +4,12 @@ title: CPU intensive tasks in Elm
 lang: en
 
 ---
+---
+date: 2019-07-14T12:46:00+02:00
+title: CPU intensive tasks in Elm
+lang: en
+
+---
 Last year I was working on an [Elm](https://elm-lang.org) project and I had to implement a fuzzy search system. There wasn't a huge amount of data to process or special needs, so the most straightforward approach seemed to calculate [edit distance](https://en.wikipedia.org/wiki/Edit_distance) directly in Elm.
 
 The good new is that functional languages often allow to write nice implementations from mathematical definitions.
@@ -54,11 +60,34 @@ Anyway, the following numbers came from this environment:
     v10.16.0
 
 To process a `10ॱ000` characters text and `1ॱ000` characters pattern takes about `.7s` with my code and about `.046s` with [leven](https://www.npmjs.com/package/leven). <br>
-Because of `patternLoop`, Elm implementation will probably cause a stack overflow when pattern exceed `~1ॱ500` characters.
-
-In conclusion, if we have a text and a pattern of comparable lengths:
+Because of `patternLoop`, Elm implementation will probably cause a stack overflow when pattern exceed `~1ॱ500` characters, now
+if we say that text and pattern have about the same length:
 
 1. the fastest Elm approach I was able to find runs about 10-20 times slower than the fastest javascript library I found
 2. you may consider Elm approach with inputs up to about `1ॱ000` characters
 3. you may want to switch to javascript with inputs up to `10ॱ000` characters
 4. you should consider another approach if you need to process more data: use a different algorithm, make computation elsewhere or run it in a web worker
+
+## Where Elm really shines
+
+Elm allows a more generic interface, in fact we can compute the distance of every `List comparable`, not just `String` or `List Char`. This is actually enforced by the Unicode support of the language: we don't have a `String.charAt` function because it would be pretty expensive, so we have to work with `List`s. <br>
+However we have an *awesome* Unicode support:
+
+```shell
+git clone git@github.com:emilianobovetti/edit-distance-benchmark.git
+cd edit-distance-benchmark
+make
+node
+```
+
+```js
+const elmApp = require('./elm-app.js').Elm.Main.init();
+const leven = require('leven');
+
+leven('🚀', '🚀'); // 0
+leven('x', '🚀'); // 2
+
+elmApp.ports.sendDistance.subscribe(console.log);
+elmApp.ports.calcDistance.send({ text: '🚀', pattern: '🚀' }); // 0
+elmApp.ports.calcDistance.send({ text: 'x', pattern: '🚀' }); // 1
+```
