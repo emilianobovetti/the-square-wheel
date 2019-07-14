@@ -4,12 +4,6 @@ title: CPU intensive tasks in Elm
 lang: en
 
 ---
----
-date: 2019-07-14T12:46:00+02:00
-title: CPU intensive tasks in Elm
-lang: en
-
----
 Last year I was working on an [Elm](https://elm-lang.org) project and I had to implement a fuzzy search system. There wasn't a huge amount of data to process or special needs, so the most straightforward approach seemed to calculate [edit distance](https://en.wikipedia.org/wiki/Edit_distance) directly in Elm.
 
 The good new is that functional languages often allow to write nice implementations from mathematical definitions.
