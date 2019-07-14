@@ -31,6 +31,3 @@ fields:
       path: 
   label: Language
   hidden: true
-pages:
-- content/blog/hello-from-forestry-io.md
-- content/blog/forestry-test.md

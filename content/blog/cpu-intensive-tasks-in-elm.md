@@ -1,7 +1,8 @@
 ---
-date: 2019-07-12T10:46:00Z
+date: 2019-07-14T12:46:00+02:00
 title: CPU intensive tasks in Elm
 lang: en
+
 ---
 Last year I was working on an [Elm](https://elm-lang.org) project and I had to implement a fuzzy search system. There wasn't a huge amount of data to process or special needs, so the most straightforward approach seemed to calculate [edit distance](https://en.wikipedia.org/wiki/Edit_distance) directly in Elm.
 
@@ -55,9 +56,9 @@ Anyway, the following numbers came from this environment:
 To process a `10ॱ000` characters text and `1ॱ000` characters pattern takes about `.7s` with my code and about `.046s` with [leven](https://www.npmjs.com/package/leven). <br>
 Because of `patternLoop`, Elm implementation will probably cause a stack overflow when pattern exceed `~1ॱ500` characters.
 
-So, in conclusion:
+In conclusion, if we have a text and a pattern of comparable lengths:
 
 1. the fastest Elm approach I was able to find runs about 10-20 times slower than the fastest javascript library I found
-2. you may consider the Elm approach with strings up to `1ॱ000` characters
-3. you may want to switch to javascript with strings up to `10ॱ000` characters
+2. you may consider Elm approach with inputs up to about `1ॱ000` characters
+3. you may want to switch to javascript with inputs up to `10ॱ000` characters
 4. you should consider another approach if you need to process more data: use a different algorithm, make computation elsewhere or run it in a web worker
