@@ -1,0 +1,36 @@
+---
+label: Blog post
+hide_body: false
+fields:
+- name: title
+  type: text
+  config:
+    required: false
+  label: Title
+- name: date
+  type: datetime
+  label: Date
+  description: ''
+  config:
+    required: false
+    date_format: 
+    time_format: 
+    display_utc: false
+  default: '2019-07-09T10:46:00Z'
+- name: lang
+  type: select
+  default: en
+  config:
+    required: true
+    options:
+    - en
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Language
+  hidden: true
+pages:
+- content/blog/hello-from-forestry-io.md
+- content/blog/forestry-test.md
