@@ -38,7 +38,7 @@ Write an efficient Elm implementation, anyway, isn't trivial task because we hav
 
 At a certain point, I had a [working implementation](https://package.elm-lang.org/packages/emilianobovetti/edit-distance/latest), now the questions that arise are: 1. how much data can we process and 2. how much faster would the task be in pure js.
 
-So I chose a [npm package](https://www.npmjs.com/package/leven) and wrote a [benchmark](https://github.com/emilianobovetti/edit-distance-benchmark/blob/master/main.js). To draw an upper bound I assumed the process shouldn't take more than one second to complete, otherwise we probably are blocking the main thread for too long.
+So I chose a [npm package](https://www.npmjs.com/package/leven) to compute edit distance fast and wrote a [benchmark](https://github.com/emilianobovetti/edit-distance-benchmark/blob/master/main.js). To draw an upper bound I assumed the process shouldn't take more than one second to complete, otherwise we probably are blocking the main thread for too long.
 
 As you can see the test uses [two random strings](https://github.com/emilianobovetti/edit-distance-benchmark/blob/2c75a072831967c0d19b94976976a218bfdd33b2/main.js#L25-L26): `text` and `pattern`, the distance between them - naturally - doesn't depend on their order (`lev text pattern == lev pattern text`), but the assumption here is that `pattern` is shorter than `text`, because [`patternLoop`](https://github.com/emilianobovetti/edit-distance/blob/35ad136177b31a87e473e6739328d710ca8b3f1c/src/EditDistance.elm#L46) isn't tail recursive.
 
@@ -64,8 +64,8 @@ if we say that text and pattern have about the same length:
 
 ## Where Elm really shines
 
-Elm allows a more generic interface, in fact we can compute the distance of every `List comparable`, not just `String` or `List Char`. This is actually enforced by the Unicode support of the language: we don't have a `String.charAt` function because it would be pretty expensive, so we have to work with `List`s. <br>
-However we have an *awesome* Unicode support:
+Elm allows a more generic interface, in fact we can compute the distance of every `List comparable`, not just `List Char`. This is actually enforced by the Unicode support of the language: we don't have a `String.charAt` function because it would be pretty expensive, so we have to work with `List`s. <br>
+However in this way we are implicitly handling surrogate pairs:
 
 ```shell
 git clone git@github.com:emilianobovetti/edit-distance-benchmark.git
@@ -85,3 +85,5 @@ elmApp.ports.sendDistance.subscribe(console.log);
 elmApp.ports.calcDistance.send({ text: '🚀', pattern: '🚀' }); // 0
 elmApp.ports.calcDistance.send({ text: 'x', pattern: '🚀' }); // 1
 ```
+
+In conclusion Elm seems a valid alternative to javascript even for some CPU intensive tasks. Interestingly, the time overhead is comparable to that of [Array.prototype.reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) vs. for loops, a price that, in many cases, I'll happily pay.
