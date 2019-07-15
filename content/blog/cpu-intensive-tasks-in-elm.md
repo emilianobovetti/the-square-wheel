@@ -65,7 +65,7 @@ if we say that text and pattern have about the same length:
 ## Where Elm really shines
 
 Elm allows a more generic interface, in fact we can compute the distance of every `List comparable`, not just `List Char`. This is actually enforced by the Unicode support of the language: we don't have a `String.charAt` function because it would be pretty expensive, so we have to work with `List`s. <br>
-However in this way we are implicitly handling surrogate pairs:
+However in this way we are implicitly handling [surrogate pairs](https://en.wikipedia.org/wiki/UTF-16#U.2B010000_to_U.2B10FFFF):
 
 ```shell
 git clone git@github.com:emilianobovetti/edit-distance-benchmark.git
