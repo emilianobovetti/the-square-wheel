@@ -78,11 +78,9 @@ node
 const elmApp = require('./elm-app.js').Elm.Main.init();
 const leven = require('leven');
 
-leven('🚀', '🚀'); // 0
 leven('x', '🚀'); // 2
 
 elmApp.ports.sendDistance.subscribe(console.log);
-elmApp.ports.calcDistance.send({ text: '🚀', pattern: '🚀' }); // 0
 elmApp.ports.calcDistance.send({ text: 'x', pattern: '🚀' }); // 1
 ```
 
