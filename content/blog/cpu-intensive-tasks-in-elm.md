@@ -6,7 +6,7 @@ lang: en
 ---
 Last year I was working on an [Elm](https://elm-lang.org) project and I had to implement a fuzzy search system. There wasn't a huge amount of data to process or special needs, so the most straightforward approach seemed to calculate [edit distance](https://en.wikipedia.org/wiki/Edit_distance) directly in Elm.
 
-The good new is that functional languages often allow to write nice implementations from mathematical definitions.
+The good news is that functional languages often allow to write nice implementations from mathematical definitions.
 In fact [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance#Definition) can be calculated as follows:
 
 ```elm
@@ -30,19 +30,19 @@ lev a b =
           (lev aTl bTl + 1)
 ```
 
-Bad new is this code is going be *real* slow. Let's say we have two strings of length `n` with no characters in common, in that case the number of `lev`'s recursive calls grows exponentially when `n` grows. It's like a fork bomb with an exit condition: two strings of just 10 characters each will produce up to 12ॱ146ॱ178 function calls.
+Bad news is this code is going be *real* slow. Let's say we have two strings of length `n` with no characters in common, in that case the number of `lev`'s recursive calls grows exponentially when `n` grows. It's like a fork bomb with an exit condition: two strings of just 10 characters each will produce up to 12ॱ146ॱ178 function calls.
 
 There are some algorithms and techniques to solve this problem efficiently, if you are interested in the topic, then [A Comparison of Approximate String Matching Algorithms](https://www.cs.hut.fi/~tarhio/papers/jtu.pdf) is probably something you want to read.
 
-Write an efficient Elm implementation, anyway, isn't trivial task because we have to represent a matrix column and update its components. This is one of those cases in which we **really** want side effects and achieve single thread raw speed, but to write nice and portable Elm code, that benefits from all the guarantees of the language, we have to deal with immutability. It can be challenging to guess which solution is going to give best performance, the game consists in run some benchmark and try again with another approach.
+Writing an efficient Elm implementation, anyway, isn't trivial task because we have to represent a matrix column and update its components. This is one of those cases in which we **really** want side effects and achieve single thread raw speed, but to write nice and portable Elm code, that benefits from all the guarantees of the language, we have to deal with immutability. It can be challenging to guess which solution is going to give best performance, the game consists in run some benchmark and try again with another approach.
 
 At a certain point, I had a [working implementation](https://package.elm-lang.org/packages/emilianobovetti/edit-distance/latest), now the questions that arise are: 1. how much data can we process and 2. how much faster would the task be in pure js.
 
-So I chose a [npm package](https://www.npmjs.com/package/leven) to compute edit distance fast and wrote a [benchmark](https://github.com/emilianobovetti/edit-distance-benchmark/blob/master/main.js). To draw an upper bound I assumed the process shouldn't take more than one second to complete, otherwise we probably are blocking the main thread for too long.
+So I chose a [npm package](https://www.npmjs.com/package/leven) to compute edit distance and wrote a [benchmark](https://github.com/emilianobovetti/edit-distance-benchmark/blob/master/main.js). To draw an upper bound I assumed the process shouldn't take more than one second to complete, otherwise we probably are blocking the main thread for too long.
 
 As you can see the test uses [two random strings](https://github.com/emilianobovetti/edit-distance-benchmark/blob/2c75a072831967c0d19b94976976a218bfdd33b2/main.js#L25-L26): `text` and `pattern`, the distance between them - naturally - doesn't depend on their order (`lev text pattern == lev pattern text`), but the assumption here is that `pattern` is shorter than `text`, because [`patternLoop`](https://github.com/emilianobovetti/edit-distance/blob/35ad136177b31a87e473e6739328d710ca8b3f1c/src/EditDistance.elm#L46) isn't tail recursive.
 
-Since time complexity is `O(length text * length pattern)` the time that takes to process a 100-chars text and 10-chars pattern should be *about* the same as with 10-chars text and 100-chars pattern.
+Since time complexity is `O(length text * length pattern)` the time that it takes to process a 100-chars text and 10-chars pattern should be *about* the same as with 10-chars text and 100-chars pattern.
 
 Anyway, the following numbers came from this environment:
 
