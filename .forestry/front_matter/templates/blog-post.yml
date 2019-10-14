@@ -31,3 +31,5 @@ fields:
       path: 
   label: Language
   hidden: true
+pages:
+- content/blog/javascript-currying-why-not.md
