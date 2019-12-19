@@ -4,6 +4,8 @@ title: CPU intensive tasks in Elm
 lang: en
 
 ---
+A little premise first: the benchmarks in this article depend closely on how things work today. The code is designed to work efficiently here and now (Elm 0.18-0.19), the evolution of the environment may change drastically the numbers, so don't rely too much on them!
+
 Last year I was working on an [Elm](https://elm-lang.org) project and I had to implement a fuzzy search system. There wasn't a huge amount of data to process or special needs, so the most straightforward approach seemed to calculate [edit distance](https://en.wikipedia.org/wiki/Edit_distance) directly in Elm.
 
 The good news is that functional languages often allow to write nice implementations from mathematical definitions.
@@ -60,12 +62,13 @@ if we say that text and pattern have about the same length:
 1. the fastest Elm approach I was able to find runs about 10-20 times slower than the fastest javascript library I found
 2. you may consider Elm approach with inputs up to about `1ॱ000` characters
 3. you may want to switch to javascript with inputs up to `10ॱ000` characters
-4. you should consider another approach if you need to process more data: use a different algorithm, make computation elsewhere or run it in a web worker
+4. you should consider another approach if you need to process more data: use a different algorithm, run it in a web worker or just move the job outside the browser
 
 ## Where Elm really shines
 
-Elm allows a more generic interface, in fact we can compute the distance of every `List comparable`, not just `List Char`. This is actually enforced by the Unicode support of the language: we don't have a `String.charAt` function because it would be pretty expensive, so we have to work with `List`s. <br>
-However in this way we are implicitly handling [surrogate pairs](https://en.wikipedia.org/wiki/UTF-16#U.2B010000_to_U.2B10FFFF):
+The very first problem I had to face in this project is the lack of a `String.charAt` function. So the options are [String.uncons](https://package.elm-lang.org/packages/elm/core/latest/String#uncons) or [String.toList](https://package.elm-lang.org/packages/elm/core/latest/String#toList). Now, the former solution would call [String.prototype.slice](https://github.com/elm/core/blob/f88d6a6de98802f5cc2d99dc1a0c2734cc5bdd7b/src/Elm/Kernel/String.js#L21-L22) for every character in the string, not awesome for performance. The latter, on the other hand, would lead to a nice [interface](https://package.elm-lang.org/packages/emilianobovetti/edit-distance/latest/EditDistance#levenshtein) that can be used with every pair of `List comparable`, not just with strings.
+
+Anyway the reason why Elm doesn't provide a `charAt` function is that it's doing some work for us behind the scenes: it handles [surrogate pairs](https://en.wikipedia.org/wiki/UTF-16#U.2B010000_to_U.2B10FFFF), so our code works out of the box where a pure js implementation may yield unintuitive results:
 
 ```shell
 git clone git@github.com:emilianobovetti/edit-distance-benchmark.git
