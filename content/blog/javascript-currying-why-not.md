@@ -16,7 +16,7 @@ However I'd like to talk about function [currying](https://en.wikipedia.org/wiki
 
 Some languages like [Haskell](https://en.wikipedia.org/wiki/Haskell_%28programming_language%29) and those in [ML family](https://en.wikipedia.org/wiki/ML_%28programming_language%29) adopt an odd philosophy: every function takes exactly one argument, no more, no less. So a multiple argument function - in those languages - will be represented with a single argument function that returns another function and so on. At the end of this chain, the last function will return some non-function value.
 
-For example in javascript we write `Math.min(10, 5)`, while in OCaml the expression would be `min 10 5`. Difference is subtle, `Math.min(10)` will be evaluated to `10`, but `min 10` will produce a function that, when applied to a second integer, will give the minimum between `10` and that number.
+For example in javascript we write `Math.min(10, 5)`, while in OCaml the expression would be `min 10 5`. Difference is subtle: `Math.min(10)` will be evaluated to `10`, but `min 10` will produce a function that, when applied to a second integer, will give the minimum between `10` and that number.
 
 This difference can be clearer if we try to implement OCaml's `min` in javascript. The code may look like this:
 
@@ -28,7 +28,7 @@ min(10)(5); // 5
 In the same way zero-argument functions typically are represented with one-argument functions that take a particular value called *unit*.
 
 ```ocaml
-(* print_newline takes a unit and returns a unit *)
+(* OCaml's print_newline takes a unit and returns a unit *)
 let () = print_newline ()
 
 (* this `()` is treated exactly as any other value! *)
@@ -94,13 +94,13 @@ Okay, I lied. I said that curried functions take exactly one argument, and now m
 This technique is called [partial application](https://en.wikipedia.org/wiki/Partial_application) actually, and means that we may provide more than one argument and get a function back when the arguments aren't enough to produce the final value. <br>
 Basically `curried_slice(1)(3) ≈ papply_slice(1, 3)`.
 
-Javascript syntax makes partial application way more ergonomic that actual currying, so from now on we'll just ignore the difference, may Haskell Brooks Curry forgive our souls.
+Javascript syntax makes partial application way more ergonomic than actual currying, so from now on we'll just ignore the difference, may Haskell Brooks Curry forgive our souls.
 
 ## Let's `curry` everything!
 
 Slow down, cowboy, now I'd like to tell why you may not want to do that.
 
-The first obvious reason is the arguments order: you may have noticed our `slice` function takes the array as last argument. This pattern is widespread in functional programming and currying makes it very tempting!
+The first obvious reason is the arguments order: you may have noticed our `slice` function takes its array as last argument. This pattern is widespread in functional programming and currying makes it very tempting!
 
 If we used the argument order a javascript developer probably would have used it's unlikely that partial application would have been useful: who needs a function that takes two indices and gives a slice of a particular array?
 
