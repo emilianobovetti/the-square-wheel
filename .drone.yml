@@ -10,6 +10,7 @@ volumes:
 steps:
   - name: publish-builder-image
     image: plugins/docker
+    target: builder
     environment:
     settings:
       username:
