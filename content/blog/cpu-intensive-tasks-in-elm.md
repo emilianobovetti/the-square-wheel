@@ -2,8 +2,8 @@
 date: 2019-07-14T12:46:00+02:00
 title: CPU intensive tasks in Elm
 lang: en
-
 ---
+
 A little premise first: the benchmarks in this article depend closely on how things work today. The code is designed to work efficiently here and now (Elm 0.18-0.19), the evolution of the environment may change drastically the numbers, so don't rely too much on them!
 
 Last year I was working on an [Elm](https://elm-lang.org) project and I had to implement a fuzzy search system. There wasn't a huge amount of data to process or special needs, so the most straightforward approach seemed to calculate [edit distance](https://en.wikipedia.org/wiki/Edit_distance) directly in Elm.
@@ -32,7 +32,7 @@ lev a b =
           (lev aTl bTl + 1)
 ```
 
-Bad news is this code is going be *real* slow. Let's say we have two strings of length `n` with no characters in common, in that case the number of `lev`'s recursive calls grows exponentially when `n` grows. It's like a fork bomb with an exit condition: two strings of just 10 characters each will produce up to 12ॱ146ॱ178 function calls.
+Bad news is this code is going be _real_ slow. Let's say we have two strings of length `n` with no characters in common, in that case the number of `lev`'s recursive calls grows exponentially when `n` grows. It's like a fork bomb with an exit condition: two strings of just 10 characters each will produce up to 12ॱ146ॱ178 function calls.
 
 There are some algorithms and techniques to solve this problem efficiently, if you are interested in the topic, then [A Comparison of Approximate String Matching Algorithms](https://www.cs.hut.fi/~tarhio/papers/jtu.pdf) is probably something you want to read.
 
@@ -44,16 +44,16 @@ So I chose a [npm package](https://www.npmjs.com/package/leven) to compute edit 
 
 As you can see the test uses [two random strings](https://github.com/emilianobovetti/edit-distance-benchmark/blob/2c75a072831967c0d19b94976976a218bfdd33b2/main.js#L25-L26): `text` and `pattern`, the distance between them - naturally - doesn't depend on their order (`lev text pattern == lev pattern text`), but the assumption here is that `pattern` is shorter than `text`, because [`patternLoop`](https://github.com/emilianobovetti/edit-distance/blob/35ad136177b31a87e473e6739328d710ca8b3f1c/src/EditDistance.elm#L46) isn't tail recursive.
 
-Since time complexity is `O(length text * length pattern)` the time that it takes to process a 100-chars text and 10-chars pattern should be *about* the same as with 10-chars text and 100-chars pattern.
+Since time complexity is `O(length text * length pattern)` the time that it takes to process a 100-chars text and 10-chars pattern should be _about_ the same as with 10-chars text and 100-chars pattern.
 
 Anyway, the following numbers came from this environment:
 
 - `awk -F ':' '/model name/{print $2}' < /proc/cpuinfo` <br>
-    Intel(R) Core(TM) i3-6006U CPU @ 2.00GHz
+  Intel(R) Core(TM) i3-6006U CPU @ 2.00GHz
 - `uname -nrv` <br>
-    hp-250-g6 4.9.0-9-amd64 #1 SMP Debian 4.9.168-1+deb9u3 (2019-06-16)
+  hp-250-g6 4.9.0-9-amd64 #1 SMP Debian 4.9.168-1+deb9u3 (2019-06-16)
 - `node -v` <br>
-    v10.16.0
+  v10.16.0
 
 To process a `10ॱ000` characters text and `1ॱ000` characters pattern takes about `.7s` with my code and about `.046s` with [leven](https://www.npmjs.com/package/leven). <br>
 Because of `patternLoop`, Elm implementation will probably cause a stack overflow when pattern exceed `~1ॱ500` characters, now

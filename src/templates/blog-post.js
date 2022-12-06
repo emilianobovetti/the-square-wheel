@@ -42,18 +42,18 @@ const BlogPostTemplate = props => {
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
       <ArticleNavigation>
         <LeftLinkWrapper>
-          {previous &&
+          {previous && (
             <Link to={previous.fields.slug} rel="prev">
               ← {previous.frontmatter.title}
             </Link>
-          }
+          )}
         </LeftLinkWrapper>
         <RightLinkWrapper>
-          {next &&
+          {next && (
             <Link to={next.fields.slug} rel="next">
               {next.frontmatter.title} →
             </Link>
-          }
+          )}
         </RightLinkWrapper>
       </ArticleNavigation>
     </Layout>

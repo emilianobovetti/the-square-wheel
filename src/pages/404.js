@@ -28,7 +28,7 @@ const GiphyIframe = styled.iframe`
   height: 100%;
 `;
 
-const NotFoundPage = ({ data }) =>
+const NotFoundPage = ({ data }) => (
   <Layout title={data.site.siteMetadata.title}>
     <SEO lang="en" title="404: Not Found" />
     <h1>404: Not Found</h1>
@@ -36,10 +36,11 @@ const NotFoundPage = ({ data }) =>
       <GiphyIframe
         src="https://giphy.com/embed/joV1k1sNOT5xC"
         frameBorder="0"
-        allowFullScreen>
-      </GiphyIframe>
+        allowFullScreen
+      ></GiphyIframe>
     </GiphyResponsiveWrapper>
-  </Layout>;
+  </Layout>
+);
 
 NotFoundPage.propTypes = {
   data: PropTypes.object,

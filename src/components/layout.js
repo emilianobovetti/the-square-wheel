@@ -67,51 +67,56 @@ const Footer = styled.footer`
   margin: ${rhythm(4 / 3)} 0;
 `;
 
-const BlankTargetLink = ({ href, title, children }) =>
+const BlankTargetLink = ({ href, title, children }) => (
   <a href={href} title={title} target="_blank" rel="noopener noreferrer">
     {children}
-  </a>;
+  </a>
+);
 
-const Ivan =
-  <BlankTargetLink href="https://twitter.com/iprignano">
-    Ivan
-  </BlankTargetLink>;
+const Ivan = (
+  <BlankTargetLink href="https://twitter.com/iprignano">Ivan</BlankTargetLink>
+);
 
-const DaveGandy =
+const DaveGandy = (
   <BlankTargetLink
     title="Dave Gandy"
     href="https://www.flaticon.com/authors/dave-gandy"
   >
     Dave Gandy
-  </BlankTargetLink>;
+  </BlankTargetLink>
+);
 
-const Flaticon =
-  <BlankTargetLink
-    title="Flaticon"
-    href="https://www.flaticon.com/"
-  >
+const Flaticon = (
+  <BlankTargetLink title="Flaticon" href="https://www.flaticon.com/">
     www.flaticon.com
-  </BlankTargetLink>;
+  </BlankTargetLink>
+);
 
-const CCLicense =
+const CCLicense = (
   <BlankTargetLink
     title="Creative Commons BY 3.0"
     href="http://creativecommons.org/licenses/by/3.0/"
   >
     CC 3.0 BY
-  </BlankTargetLink>;
+  </BlankTargetLink>
+);
 
-const Layout = ({ title, children }) =>
+const Layout = ({ title, children }) => (
   <PageWrapper>
     <LogoWrapper to={'/'}>
       <LogoImg src={logoSrc} alt="The Square Wheel's logo" />
     </LogoWrapper>
 
     <ContentWrapper>
-      {title
-        ? <h1><TitleLink to={'/'}>{title}</TitleLink></h1>
-        : <Link to={'/'}><HomeLogo src={homeLogoSrc} alt="Home" /></Link>
-      }
+      {title ? (
+        <h1>
+          <TitleLink to={'/'}>{title}</TitleLink>
+        </h1>
+      ) : (
+        <Link to={'/'}>
+          <HomeLogo src={homeLogoSrc} alt="Home" />
+        </Link>
+      )}
     </ContentWrapper>
 
     <MainWrapper>
@@ -119,16 +124,15 @@ const Layout = ({ title, children }) =>
       <SpacedHr />
       <AuthorInfo />
       <Footer>
-        <div>
-          The Square Wheel&apos;s logo is made by {Ivan}.
-        </div>
+        <div>The Square Wheel&apos;s logo is made by {Ivan}.</div>
 
         <div>
           Icons made by {DaveGandy} from {Flaticon} is licensed by {CCLicense}.
         </div>
       </Footer>
     </MainWrapper>
-  </PageWrapper>;
+  </PageWrapper>
+);
 
 Layout.propTypes = {
   title: PropTypes.string,
