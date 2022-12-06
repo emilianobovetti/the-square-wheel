@@ -2,8 +2,13 @@ kind: pipeline
 type: docker
 name: default
 
+volumes:
+  - name: cache
+    host:
+      path: /tmp/cache
+
 steps:
-  - name: publish builder image
+  - name: publish-builder-image
     image: plugins/docker
     environment:
     settings:
@@ -15,3 +20,72 @@ steps:
       tags: latest
     when:
       branch: master
+
+  - name: restore-cache
+    image: meltwater/drone-cache
+    pull: if-not-exists
+    settings:
+      backend: "filesystem"
+      restore: true
+      cache_key: "volume"
+      archive_format: "gzip"
+      mount:
+        - "node_modules"
+    volumes:
+      - name: cache
+        path: /tmp/cache
+
+  - name: dependencies
+    image: emilianobovetti/the-square-wheel
+    pull: always
+    commands:
+      - yarn
+    depends_on:
+      - restore-cache
+      - publish-builder-image
+
+  - name: lint
+    image: emilianobovetti/the-square-wheel
+    commands:
+      - yarn lint
+    depends_on:
+      - dependencies
+
+  - name: build
+    image: emilianobovetti/the-square-wheel
+    commands:
+      - yarn build
+    depends_on:
+      - dependencies
+
+  - name: publish
+    image: emilianobovetti/the-square-wheel
+    environment:
+      NETLIFY_AUTH_TOKEN:
+        from_secret: netlify-auth-token
+      NETLIFY_SITE_ID:
+        from_secret: netlify-site-id
+    commands:
+      - sh deploy.sh
+    depends_on:
+      - lint
+      - build
+    when:
+      branch: master
+
+  - name: rebuild-cache
+    image: meltwater/drone-cache
+    pull: if-not-exists
+    settings:
+      backend: "filesystem"
+      rebuild: true
+      cache_key: "volume"
+      archive_format: "gzip"
+      mount:
+        - "node_modules"
+    volumes:
+      - name: cache
+        path: /tmp/cache
+    depends_on:
+      - build
+      - publish

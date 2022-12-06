@@ -1,24 +1,19 @@
 const pkg = require('./package.json');
 
-const capitalize = str =>
-  str[0].toUpperCase() + str.slice(1);
+const capitalize = str => str[0].toUpperCase() + str.slice(1);
 
-const title = pkg.name
-  .split('-')
-  .map(capitalize)
-  .join(' ');
+const title = pkg.name.split('-').map(capitalize).join(' ');
 
 module.exports = {
   siteMetadata: {
     title: title,
     author: pkg.author,
     description: pkg.description,
-    siteUrl: pkg.siteUrl
+    siteUrl: pkg.siteUrl,
   },
   plugins: [
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-eslint',
     'gatsby-plugin-sharp',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-offline',

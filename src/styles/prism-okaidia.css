@@ -4,8 +4,8 @@
  * @author ocodia
  */
 
-code[class*="language-"],
-pre[class*="language-"] {
+code[class*='language-'],
+pre[class*='language-'] {
   background: none;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   text-align: left;
@@ -26,23 +26,23 @@ pre[class*="language-"] {
 }
 
 /* Code blocks */
-pre[class*="language-"] {
+pre[class*='language-'] {
   color: #f8f8f2;
   padding: 1em;
   overflow: auto;
-  border-radius: .2em;
+  border-radius: 0.2em;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
   background: #272822;
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
-  padding: .1em .2em;
-  border-radius: .2em;
+:not(pre) > code[class*='language-'] {
+  padding: 0.1em 0.2em;
+  border-radius: 0.2em;
   white-space: normal;
   background: #d7d7d6;
 }
@@ -59,7 +59,7 @@ pre[class*="language-"] {
 }
 
 .namespace {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .token.property,

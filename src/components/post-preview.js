@@ -13,7 +13,7 @@ const PostTitleLink = styled(Link)`
   box-shadow: none;
 `;
 
-const PostPreview = ({ node }) =>
+const PostPreview = ({ node }) => (
   <div key={node.fields.slug}>
     <PostTitle>
       <PostTitleLink to={node.fields.slug}>
@@ -22,7 +22,8 @@ const PostPreview = ({ node }) =>
     </PostTitle>
     <small>{node.frontmatter.date}</small>
     <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-  </div>;
+  </div>
+);
 
 PostPreview.propTypes = {
   node: PropTypes.object,

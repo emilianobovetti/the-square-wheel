@@ -6,12 +6,13 @@ import PostPreview from '../components/post-preview';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-const BlogIndex = ({ data }) =>
+const BlogIndex = ({ data }) => (
   <Layout title={data.site.siteMetadata.title}>
     <SEO lang="en" />
 
     {data.allMarkdownRemark.edges.map(PostPreview)}
-  </Layout>;
+  </Layout>
+);
 
 BlogIndex.propTypes = {
   data: PropTypes.object,

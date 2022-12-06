@@ -11,12 +11,15 @@ const authorQuery = graphql`
   }
 `;
 
-const AuthorInfo = _props =>
+const AuthorInfo = _props => (
   <StaticQuery
     query={authorQuery}
-    render={data =>
-      <p><strong>{data.site.siteMetadata.author}</strong></p>
-    }
-  />;
+    render={data => (
+      <p>
+        <strong>{data.site.siteMetadata.author}</strong>
+      </p>
+    )}
+  />
+);
 
 export default AuthorInfo;
