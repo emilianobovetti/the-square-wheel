@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: "$PWD"
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    hostname: the-square-wheel
+    container_name: the-square-wheel
+    volumes:
+      - "$PWD:/opt/app"
+    working_dir: /opt/app
+    ports:
+      - 8000:8000
+    command: ["yarn", "develop", "--host", "0.0.0.0"]
