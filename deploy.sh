@@ -14,7 +14,7 @@ fi
 
 if [ "$DRONE_BRANCH" = "master" ]; then
   "$DRONE_WORKSPACE/node_modules/.bin/netlify" deploy \
-    --message="$DRONE_BRANCH@$(git rev-parse --short HEAD)" \
+    --message="$DRONE_BRANCH@$(date -u -Iseconds)" \
     --auth="$NETLIFY_AUTH_TOKEN" \
     --site="$NETLIFY_SITE_ID" \
     --dir=public \
